@@ -14,106 +14,149 @@ The only requirement is having Node.js & npm installed - [install with nvm](http
 
 Follow these steps:
 
-# Shaithilyog Website
+# SHAITHILYOG
+### Advancing Healthcare Through Innovation
 
-## Project info
+---
 
-This is the official website for Shaithilyog, built with React, TypeScript, and Vite.
+## 🌟 About Shaithilyog
 
-## Features
-- ⚡ Fast development with Vite
-- 🎨 Modern UI with Tailwind CSS and Radix UI
-- 📱 Responsive design
-- 🚀 Optimized for production
-- 📦 Ready for GitHub Pages deployment
+Shaithilyog is a pioneering healthcare technology organization dedicated to revolutionizing medical research, diagnostics, and treatment through cutting-edge innovation. Our multidisciplinary approach combines biotechnology, artificial intelligence, and molecular medicine to address some of the most challenging health issues of our time.
 
-## How can I edit this code?
+## � Our Mission
 
-**Use your preferred IDE**
+To bridge the gap between advanced scientific research and practical healthcare solutions, making innovative medical technologies accessible to improve global health outcomes.
 
-Clone this repository and start making changes locally.
+## � What We Do
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Medical Research & Development**: Pioneering breakthrough technologies in healthcare
+- **Biotechnology Innovation**: Developing next-generation molecular and cellular therapies
+- **Digital Health Solutions**: Creating AI-powered diagnostic and treatment platforms
+- **Technology Transfer**: Translating research into real-world medical applications
 
-Follow these steps:
+## 🌐 Official Website
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+This repository contains the source code for our official website, showcasing our research, innovations, and organizational mission.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+**Live Site**: [https://siddhant-rajhans.github.io/SHAITHILYOG/](https://siddhant-rajhans.github.io/SHAITHILYOG/)
 
-# Step 3: Install the dependencies.
+---
+
+## 🛠️ Technical Information
+
+### Built With
+- ⚡ **React 18** - Modern UI framework
+- 🎨 **TypeScript** - Type-safe development
+- ⚡ **Vite** - Fast build tool and dev server
+- 🎨 **Tailwind CSS** - Utility-first styling
+- 🧩 **Radix UI** - Accessible component library
+- 📱 **Responsive Design** - Mobile-first approach
+
+### Features
+- 🚀 Optimized performance
+- ♿ Accessibility compliant
+- 📱 Mobile responsive
+- 🌙 Modern design system
+- 🔍 SEO optimized
+
+---
+
+## 👥 For Contributors & Developers
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Git
+
+### Development Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/siddhant-rajhans/SHAITHILYOG.git
+
+# Navigate to project directory
+cd SHAITHILYOG
+
+# Install dependencies
 npm install
 
-# Step 4: Start the development server.
+# Start development server
 npm run dev
 ```
 
-## GitHub Pages Deployment
+### Available Scripts
 
-This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
-
-### Automatic Deployment (Recommended)
-
-1. **Push to GitHub**: Push your code to the `main` branch of your GitHub repository
-2. **Enable GitHub Pages**: 
-   - Go to your repository settings
-   - Navigate to "Pages" section
-   - Under "Source", select "GitHub Actions"
-3. **Automatic Deploy**: The workflow will automatically build and deploy your site on every push to main
-
-Your site will be available at: `https://<username>.github.io/Shaithilyog/`
-
-### Manual Deployment
-
-If you prefer manual deployment:
-
-```sh
-# Build and deploy to gh-pages branch
-npm run deploy
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run code linting
+npm run deploy       # Deploy to GitHub Pages
 ```
 
-## How can I deploy this project?
+### Project Structure
 
-### GitHub Pages (Recommended)
-- Automatic deployment via GitHub Actions
-- Custom domain support available
-
-### Other Options
-- **Vercel**: Connect your GitHub repository to Vercel for automatic deployments
-- **Netlify**: Drag and drop the `dist` folder or connect via Git
-- **Static hosting**: Upload the `dist` folder to any static hosting service
-
-## Build for Production
-
-```sh
-npm run build
+```
+src/
+├── components/      # Reusable UI components
+│   ├── layout/      # Layout components
+│   ├── sections/    # Page sections
+│   └── ui/          # Base UI components
+├── pages/          # Application pages
+├── lib/            # Utility functions
+└── assets/         # Static assets
 ```
 
-The built files will be in the `dist` directory.
+---
 
-## Can I connect a custom domain?
+## 🚀 Deployment
 
-Yes! Most hosting platforms support custom domains:
+The website is automatically deployed to GitHub Pages using GitHub Actions on every push to the main branch.
 
-- **GitHub Pages**: Add a `CNAME` file to your repository or configure in repository settings
-- **Vercel/Netlify**: Configure in their respective dashboards
+### Deployment Process
+1. **Automatic**: Push to `main` branch triggers deployment
+2. **Manual**: Run `npm run deploy` for manual deployment
+3. **Live URL**: Updates automatically at the GitHub Pages URL
 
-## Performance Notes
+---
 
-The current build produces a large JavaScript bundle (~648KB). Consider:
-- Code splitting for better performance
-- Lazy loading of components
-- Bundle analysis and optimization
+## 📞 Contact & Collaboration
 
-## Troubleshooting
+### Get Involved
+- **Research Partnerships**: Collaborate on breakthrough medical research
+- **Technology Transfer**: License our innovations
+- **Investment Opportunities**: Join us in advancing healthcare
+- **Academic Collaboration**: Partner with our research initiatives
 
-If you encounter issues:
-1. Clear node_modules and reinstall: `rm -rf node_modules package-lock.json && npm install`
-2. Clear build cache: `rm -rf dist && npm run build`
-3. Check that your base URL is correctly set for your hosting environment
+### Connect With Us
+- 🌐 **Website**: [Official Shaithilyog Website](https://siddhant-rajhans.github.io/SHAITHILYOG/)
+- 📧 **Contact**: Reach out through our website contact form
+- 💼 **Professional Inquiries**: Business partnerships and collaborations
+
+---
+
+## 📄 License & Usage
+
+This website and its content represent Shaithilyog's intellectual property. For usage rights, partnerships, or licensing inquiries, please contact us through official channels.
+
+---
+
+## 🔗 Links & Resources
+
+- [Research Publications](#) *(Coming Soon)*
+- [Technology Portfolio](#) *(Coming Soon)*
+- [Partnership Opportunities](#) *(Coming Soon)*
+- [Career Opportunities](#) *(Coming Soon)*
+
+---
+
+<div align="center">
+
+**Shaithilyog** - *Innovating Healthcare for Tomorrow*
+
+© 2025 Shaithilyog. All rights reserved.
+
+</div>
 
 **Edit a file directly in GitHub**
 
