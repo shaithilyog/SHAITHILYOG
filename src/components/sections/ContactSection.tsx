@@ -235,7 +235,7 @@ const ContactSection = () => {
       {isSent && (
         <SuccessMessage
           title="Message Sent!"
-          message="Thank you for reaching out! We've received your message and will get back to you within 24 hours."
+          message="Thank you for reaching out! We've received your message."
           onClose={() => setIsSent(false)}
         />
       )}
