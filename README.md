@@ -87,11 +87,14 @@ npm run dev
 ### Available Scripts
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
-npm run lint         # Run code linting
-npm run deploy       # Deploy to GitHub Pages
+npm run dev                    # Start development server
+npm run build                  # Build for production (auto-detects deployment type)
+npm run build:custom-domain    # Build for custom domain (base path: /)
+npm run build:github          # Build for GitHub Pages subdirectory (base path: /SHAITHILYOG/)
+npm run preview               # Preview production build
+npm run lint                  # Run code linting
+npm run deploy:custom-domain  # Deploy to custom domain
+npm run deploy:github         # Deploy to GitHub Pages subdirectory
 ```
 
 ### Project Structure
@@ -111,7 +114,27 @@ src/
 
 ## 🚀 Deployment
 
-The website is automatically deployed to GitHub Pages using GitHub Actions on every push to the main branch.
+The website supports both custom domain and GitHub Pages subdirectory deployment.
+
+### Custom Domain Deployment (Recommended)
+For custom domains, the site is configured to serve from root path (`/`):
+
+```bash
+# Manual deployment to custom domain
+npm run deploy:custom-domain
+```
+
+**GitHub Actions**: The workflow is currently set for custom domain deployment.
+
+### GitHub Pages Subdirectory Deployment
+For `username.github.io/repository-name` URLs:
+
+```bash
+# Manual deployment to GitHub Pages subdirectory
+npm run deploy:github
+```
+
+**To switch to subdirectory deployment**: Edit `.github/workflows/deploy.yml` and change the build command to `npm run build:github`.
 
 ### Deployment Process
 1. **Automatic**: Push to `main` branch triggers deployment

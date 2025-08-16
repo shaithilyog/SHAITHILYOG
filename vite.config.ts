@@ -3,8 +3,9 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig(() => ({
-  base: '/SHAITHILYOG/',
+export default defineConfig(({ command, mode }) => ({
+  // Use '/' for custom domain, '/SHAITHILYOG/' for GitHub Pages subdirectory
+  base: process.env.VITE_BASE_PATH || (command === 'build' && mode === 'production' ? '/' : '/'),
   server: {
     host: "::",
     port: 8080,
