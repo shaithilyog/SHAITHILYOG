@@ -34,6 +34,7 @@ const Footer = () => {
       title: 'Company',
       links: [
         { name: 'About Us', href: '/learn-more' },
+        { name: 'Careers', href: '/careers' },
         { name: 'Learn More', href: '/learn-more' },
         { name: 'Join the Future', href: '/join-the-future' },
         { name: 'Privacy Policy', href: '/privacy-policy' }
