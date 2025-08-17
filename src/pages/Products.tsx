@@ -1,277 +1,378 @@
 import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Rocket, Clock, Bell } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/lib/supabase';
+import { 
+  ArrowRight, 
+  Smartphone, 
+  Dumbbell, 
+  Heart, 
+  Calendar, 
+  Users, 
+  TrendingUp,
+  Play,
+  Star,
+  Clock,
+  Activity,
+  Utensils,
+  Moon,
+  Target,
+  BarChart3,
+  Zap,
+  Shield,
+  Brain,
+  Building2,
+  CreditCard,
+  User,
+  Stethoscope,
+  MessageCircle,
+  Database,
+  Camera,
+  Mail,
+  CheckCircle
+} from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 
+// Import LogX assets
+import logxLogo from '@/assets/logx/logX logo.png';
+import logxPlaystore from '@/assets/logx/logx_playstore image.png';
+import logxSplash from '@/assets/logx/splash-screen.png';
+
 const Products = () => {
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleBetaSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast({
+        title: "Email Required",
+        description: "Please enter your email address to join the beta.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    
+    try {
+      const { data, error } = await supabase
+        .from('beta_signups')
+        .insert([
+          {
+            email: email,
+            product: 'logx',
+            signed_up_at: new Date().toISOString()
+          }
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Successfully Signed Up!",
+        description: "Thank you for joining the LogX beta! We'll contact you soon with testing details.",
+      });
+      
+      setEmail('');
+    } catch (error: any) {
+      console.error('Error signing up for beta:', error);
+      toast({
+        title: "Signup Failed",
+        description: "There was an error signing up for the beta. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const products = [
+    {
+      id: 'logx',
+      name: 'LogX',
+      subtitle: 'Fitness, Food & Progress',
+      status: 'Alpha Testing',
+      statusColor: 'bg-blue-500',
+      description: 'Your comprehensive fitness companion powered by AI. Track workouts, nutrition, and progress with intelligent recommendations.',
+      logo: logxLogo,
+      banner: logxPlaystore,
+      screenshots: [logxSplash],
+      available: true,
+      features: [
+        { icon: User, title: 'Personal Profile', desc: 'Secure registration with personalized fitness goals' },
+        { icon: Target, title: 'Smart Goal Setting', desc: 'AI-powered recommendations based on your objectives' },
+        { icon: Heart, title: 'Health Monitoring', desc: 'Track allergies, conditions, and body measurements' },
+        { icon: Dumbbell, title: 'Custom Workouts', desc: 'Tailored plans with video tutorials and progress tracking' },
+        { icon: Utensils, title: 'Nutrition Intelligence', desc: 'Smart meal plans with macro tracking and recipe suggestions' },
+        { icon: Moon, title: 'Sleep Analytics', desc: 'Monitor sleep quality for complete wellness tracking' },
+        { icon: Brain, title: 'ML Recommendations', desc: 'Personalized suggestions that evolve with your progress' },
+        { icon: Activity, title: 'Virtual Classes', desc: 'Join live workout sessions from anywhere' }
+      ],
+      techSpecs: {
+        platform: ['Android', 'iOS (Coming Soon)'],
+        ai: ['Exercise Recommendation Engine', 'Nutrition Analysis', 'Progress Prediction', 'Image to Nutrition']
+      }
+    },
+    {
+      id: 'ascendancy',
+      name: 'Ascendancy',
+      subtitle: 'Gym & Subscription Management',
+      status: 'In Development',
+      statusColor: 'bg-orange-500',
+      description: 'Complete gym management solution for fitness centers and their members.',
+      logo: '/api/placeholder/100/100',
+      banner: '/api/placeholder/800/400',
+      screenshots: [],
+      available: false,
+      features: [
+        { icon: Building2, title: 'Gym Management', desc: 'Complete facility and equipment management' },
+        { icon: Users, title: 'Member Portal', desc: 'Streamlined member registration and profiles' },
+        { icon: CreditCard, title: 'Subscription Billing', desc: 'Automated billing and payment processing' },
+        { icon: Calendar, title: 'Class Scheduling', desc: 'Easy booking system for classes and trainers' },
+        { icon: BarChart3, title: 'Analytics Dashboard', desc: 'Real-time insights on gym performance' },
+        { icon: Smartphone, title: 'Mobile App', desc: 'Companion app for members and staff' }
+      ],
+      techSpecs: {
+        platform: ['Web Dashboard', 'Mobile App'],
+        integration: ['Payment Gateways', 'Access Control Systems'],
+        features: ['Real-time Analytics', 'Automated Billing', 'Member Management']
+      }
+    },
+    {
+      id: 'sha',
+      name: 'SHA',
+      subtitle: 'Simplified Health Assistant',
+      status: 'In Development',
+      statusColor: 'bg-purple-500',
+      description: 'AI-powered health assistant that simplifies healthcare management and provides intelligent insights.',
+      logo: '/api/placeholder/100/100',
+      banner: '/api/placeholder/800/400',
+      screenshots: [],
+      available: false,
+      features: [
+        { icon: Stethoscope, title: 'Health Monitoring', desc: 'Continuous health parameter tracking' },
+        { icon: Brain, title: 'AI Diagnostics', desc: 'Intelligent health analysis and recommendations' },
+        { icon: MessageCircle, title: 'Health Chat', desc: '24/7 AI health assistant for queries' },
+        { icon: Database, title: 'Medical Records', desc: 'Secure digital health record management' },
+        { icon: Shield, title: 'Privacy First', desc: 'End-to-end encryption for all health data' },
+        { icon: TrendingUp, title: 'Health Trends', desc: 'Predictive analytics for health patterns' }
+      ],
+      techSpecs: {
+        platform: ['Mobile App', 'Web Portal'],
+        integration: ['Healthcare APIs', 'Wearable Devices'],
+        ai: ['Diagnostic Assistant', 'Health Prediction', 'Symptom Analysis']
+      }
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 relative overflow-hidden bg-gradient-hero">
-        <div className="absolute inset-0 bg-gradient-glow opacity-20" />
-        
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <section className="pt-32 pb-20 px-6">
+        <div className="container mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center space-y-8"
-          >
-            <div className="space-y-6">
-              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold">
-                <span className="text-gradient">Products</span> Coming Soon
-              </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-                We're working hard to bring you revolutionary healthcare products that will 
-                transform the way you manage your health and wellbeing.
-              </p>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex justify-center"
-            >
-              <div className="w-24 h-24 lg:w-32 lg:h-32 bg-gradient-primary rounded-full flex items-center justify-center shadow-glow">
-                <Rocket className="w-12 h-12 lg:w-16 lg:h-16 text-background" />
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Coming Soon Features */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-background to-card">
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 lg:mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              What's <span className="text-gradient">Coming</span>
-            </h2>
-            <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Get ready for innovative healthcare solutions that will revolutionize 
-              how you interact with healthcare technology.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-            >
-              <Card className="h-full p-6 lg:p-8 shadow-card hover:shadow-neural transition-all duration-300 border-primary/10 hover:border-primary/30 bg-card/50 backdrop-blur-sm text-center">
-                <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4 shadow-glow">
-                  <span className="text-xl font-bold text-background">AI</span>
-                </div>
-                <h3 className="text-xl font-bold mb-3">AI-Powered Health App</h3>
-                <p className="text-muted-foreground">
-                  Intelligent health monitoring and personalized recommendations 
-                  powered by advanced machine learning algorithms.
-                </p>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-            >
-              <Card className="h-full p-6 lg:p-8 shadow-card hover:shadow-neural transition-all duration-300 border-primary/10 hover:border-primary/30 bg-card/50 backdrop-blur-sm text-center">
-                <div className="w-12 h-12 bg-gradient-secondary rounded-lg flex items-center justify-center mx-auto mb-4 shadow-glow">
-                  <span className="text-xl font-bold text-background">Tel</span>
-                </div>
-                <h3 className="text-xl font-bold mb-3">Telemedicine Platform</h3>
-                <p className="text-muted-foreground">
-                  Seamless virtual consultations with healthcare providers, 
-                  bringing quality care directly to your home.
-                </p>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-            >
-              <Card className="h-full p-6 lg:p-8 shadow-card hover:shadow-neural transition-all duration-300 border-primary/10 hover:border-primary/30 bg-card/50 backdrop-blur-sm text-center">
-                <div className="w-12 h-12 bg-gradient-accent rounded-lg flex items-center justify-center mx-auto mb-4 shadow-glow">
-                  <span className="text-xl font-bold text-background">IoT</span>
-                </div>
-                <h3 className="text-xl font-bold mb-3">Health Monitoring Suite</h3>
-                <p className="text-muted-foreground">
-                  Comprehensive health tracking with wearable integration 
-                  and real-time analytics for complete health insights.
-                </p>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Notification Section */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <Card className="p-8 lg:p-12 shadow-neural border-primary/20 bg-card/50 backdrop-blur-sm text-center">
-              <div className="space-y-6">
-                <div className="w-16 h-16 bg-gradient-glow rounded-full flex items-center justify-center mx-auto shadow-glow">
-                  <Bell className="w-8 h-8 text-background" />
-                </div>
-                
-                <div className="space-y-4">
-                  <h3 className="text-2xl lg:text-3xl font-bold">
-                    Be the First to <span className="text-gradient">Know</span>
-                  </h3>
-                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                    Our products are in active development. Join our community to get 
-                    early access, beta testing opportunities, and exclusive updates 
-                    on our launch timeline.
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/join-the-future">
-                    <Button variant="hero" size="lg" className="group">
-                      Join the Future
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                  <Link to="/learn-more">
-                    <Button variant="neural" size="lg" className="group">
-                      <Clock className="mr-2 h-4 w-4" />
-                      Learn More
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </Card>
+            <h1 className="text-5xl md:text-6xl font-bold text-gradient mb-6">
+              Our Products
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Discover our innovative healthcare and fitness solutions designed to transform 
+              your wellness journey through cutting-edge technology and AI-powered insights.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-background to-card">
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 lg:mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Development <span className="text-gradient">Timeline</span>
-            </h2>
-            <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Stay updated on our progress as we build the future of healthcare technology
-            </p>
-          </motion.div>
-
-          <div className="max-w-2xl mx-auto">
-            <div className="space-y-8">
+      {/* Products Grid */}
+      <section className="py-20 px-6">
+        <div className="container mx-auto">
+          <div className="grid gap-12">
+            {products.map((product, index) => (
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="flex items-center space-x-4"
+                className="relative"
               >
-                <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0"></div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-foreground">Q2 2023 - Planning & Design</h4>
-                  <p className="text-sm text-muted-foreground">Research, user experience design, and technical architecture</p>
-                </div>
-                <span className="text-xs text-primary font-medium">Completed</span>
-              </motion.div>
+                <Card className={`border-primary/20 hover:border-primary/40 transition-all duration-300 overflow-hidden ${!product.available ? 'opacity-75' : ''}`}>
+                  {!product.available && (
+                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm z-10 flex items-center justify-center">
+                      <div className="text-center">
+                        <Clock className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+                        <h3 className="text-2xl font-bold text-gradient mb-2">Coming Soon</h3>
+                        <p className="text-muted-foreground">Currently in development</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  <CardContent className="p-0">
+                    {/* Product Header */}
+                    <div className="p-8 bg-gradient-to-r from-primary/5 to-secondary/5">
+                      <div className="flex flex-col lg:flex-row lg:items-center gap-8">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-4 mb-4">
+                            <img 
+                              src={product.logo} 
+                              alt={`${product.name} Logo`}
+                              className="w-16 h-16 rounded-xl shadow-lg"
+                            />
+                            <div>
+                              <h2 className="text-3xl font-bold text-gradient">{product.name}</h2>
+                              <p className="text-lg text-muted-foreground">{product.subtitle}</p>
+                            </div>
+                            <Badge className={`${product.statusColor} text-white`}>
+                              {product.status}
+                            </Badge>
+                          </div>
+                          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                            {product.description}
+                          </p>
+                          
+                          {product.available && (
+                            <form onSubmit={handleBetaSignup} className="space-y-4">
+                              <div className="flex flex-col sm:flex-row gap-3">
+                                <Input
+                                  type="email"
+                                  placeholder="Enter your email for beta access"
+                                  value={email}
+                                  onChange={(e) => setEmail(e.target.value)}
+                                  className="flex-1"
+                                  disabled={isLoading}
+                                />
+                                <Button type="submit" className="group" disabled={isLoading}>
+                                  <Mail className="w-4 h-4 mr-2" />
+                                  {isLoading ? 'Signing Up...' : 'Signup for Beta'}
+                                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                              </div>
+                              <p className="text-sm text-muted-foreground">
+                                Currently testing on Android. iOS version coming soon!
+                              </p>
+                            </form>
+                          )}
+                        </div>
+                        
+                        {/* Product Screenshot */}
+                        <div className="lg:w-1/3">
+                          <img 
+                            src={product.banner} 
+                            alt={`${product.name} Interface`}
+                            className="w-full rounded-xl shadow-2xl"
+                          />
+                        </div>
+                      </div>
+                    </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-center space-x-4"
-              >
-                <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0"></div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-foreground">Q1 & Q2 2024 - Literature review</h4>
-                  <p className="text-sm text-muted-foreground">Researching existing breakthroughs and opensource contributions in healthcare.</p>
-                </div>
-                <span className="text-xs text-primary font-medium">Completed</span>
-              </motion.div>
+                    {/* Features Grid */}
+                    <div className="p-8">
+                      <h3 className="text-2xl font-bold text-gradient mb-6">Key Features</h3>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        {product.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="text-center">
+                            <div className="w-12 h-12 bg-gradient-glow rounded-lg flex items-center justify-center mx-auto mb-3">
+                              <feature.icon className="w-6 h-6 text-primary" />
+                            </div>
+                            <h4 className="font-semibold mb-2">{feature.title}</h4>
+                            <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                          </div>
+                        ))}
+                      </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="flex items-center space-x-4"
-              >
-                <div className="w-4 h-4 bg-secondary rounded-full flex-shrink-0"></div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-foreground">Q1 2025 - Development</h4>
-                  <p className="text-sm text-muted-foreground">Core platform development and AI model training</p>
-                </div>
-                <span className="text-xs text-secondary font-medium">In Progress</span>
+                      {/* Tech Specs */}
+                      <div className="border-t border-primary/10 pt-8">
+                        <h4 className="text-lg font-semibold mb-4">Technical Specifications</h4>
+                        <div className="grid md:grid-cols-3 gap-6">
+                          <div>
+                            <h5 className="font-medium text-primary mb-2">Platform</h5>
+                            <div className="flex flex-wrap gap-2">
+                              {product.techSpecs.platform.map((platform, i) => (
+                                <Badge key={i} variant="secondary">{platform}</Badge>
+                              ))}
+                            </div>
+                          </div>
+                          {product.techSpecs.ai && (
+                            <div>
+                              <h5 className="font-medium text-primary mb-2">AI Features</h5>
+                              <div className="flex flex-wrap gap-2">
+                                {product.techSpecs.ai.map((ai, i) => (
+                                  <Badge key={i} variant="secondary" className="bg-gradient-glow text-primary">{ai}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {product.techSpecs.features && (
+                            <div>
+                              <h5 className="font-medium text-primary mb-2">Core Features</h5>
+                              <div className="flex flex-wrap gap-2">
+                                {product.techSpecs.features.map((feature, i) => (
+                                  <Badge key={i} variant="outline">{feature}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="flex items-center space-x-4"
-              >
-                <div className="w-4 h-4 bg-muted rounded-full flex-shrink-0"></div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-muted-foreground">Q2 2025 - Beta Testing</h4>
-                  <p className="text-sm text-muted-foreground">Limited beta release and user feedback collection</p>
-                </div>
-                <span className="text-xs text-muted-foreground font-medium">Upcoming</span>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="flex items-center space-x-4"
-              >
-                <div className="w-4 h-4 bg-muted rounded-full flex-shrink-0"></div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-muted-foreground">Q1 2026 - Launch</h4>
-                  <p className="text-sm text-muted-foreground">Public launch of ShaithilYog platform</p>
-                </div>
-                <span className="text-xs text-muted-foreground font-medium">Upcoming</span>
-              </motion.div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
-      
+
+      {/* CTA Section */}
+      <section className="py-20 px-6 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10">
+        <div className="container mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-4xl font-bold text-gradient mb-6">
+              Ready to Transform Your Health Journey?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Join thousands of users who are already experiencing the future of healthcare technology.
+              Be the first to access our latest innovations.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild>
+                <Link to="/join-the-future">
+                  Join Beta Program
+                  <Zap className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link to="/contact-us">
+                  Contact Sales
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

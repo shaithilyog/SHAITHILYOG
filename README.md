@@ -175,6 +175,15 @@ This website and its content represent Shaithilyog's intellectual property. For 
 
 <div align="center">
 
+Possible Status Values for log x status table:
+pending (default) - User just signed up, waiting for review/approval
+approved - User has been selected for beta testing
+invited - Beta invite has been sent to the user
+active - User is actively participating in beta testing
+completed - User has finished beta testing
+declined - User was not selected or declined participation
+inactive - User stopped participating
+
 **Shaithilyog** - *Innovating Healthcare for Tomorrow*
 
 © 2025 Shaithilyog. All rights reserved.
