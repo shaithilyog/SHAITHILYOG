@@ -237,7 +237,7 @@ const LearnMore = () => {
               Ready to <span className="text-gradient">Transform</span> Your Health?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              For questions or support, reach out to us at support@shaithilyog.live
+              For questions or support, reach out to us at support@shaithilyog.tech
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/join-the-future">

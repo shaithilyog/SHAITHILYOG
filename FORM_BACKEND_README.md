@@ -71,8 +71,8 @@ VITE_SUPABASE_URL=https://qxehfwutgjfbnnnpzgdz.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4ZWhmd3V0Z2pmYm5ubnB6Z2R6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc1MjQ1NDYsImV4cCI6MjA2MzEwMDU0Nn0.D6ijwT8YvstjtpPKGmfaBMpDVHX4hqOguQeht4YcspM
 
 # Email Configuration (for future backend implementation)
-VITE_CONTACT_EMAIL=support@shaithilyog.live
-VITE_ADMIN_EMAIL=admin@shaithilyog.live
+VITE_CONTACT_EMAIL=support@shaithilyog.tech
+VITE_ADMIN_EMAIL=admin@shaithilyog.tech
 ```
 
 ## File Structure
@@ -172,4 +172,4 @@ For more complex workflows:
 Current project: `https://qxehfwutgjfbnnnpzgdz.supabase.co`
 
 ## Contact
-For questions about the form implementation: support@shaithilyog.live
+For questions about the form implementation: support@shaithilyog.tech

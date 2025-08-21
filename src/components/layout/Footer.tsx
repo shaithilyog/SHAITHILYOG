@@ -8,7 +8,7 @@ const Footer = () => {
     // { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/shaithilyog/', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/orgs/shaithilyog/repositories', label: 'GitHub' },
-    { icon: Mail, href: 'mailto:support@shaithilyog.live', label: 'Email' },
+    { icon: Mail, href: 'mailto:support@shaithilyog.tech', label: 'Email' },
   ];
 
   const footerSections = [

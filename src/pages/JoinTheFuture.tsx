@@ -260,7 +260,7 @@ const JoinTheFuture = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="your.email@example.live" 
+                        placeholder="your.email@example.tech" 
                         className="border-primary/20 focus:border-primary/50"
                         required
                       />

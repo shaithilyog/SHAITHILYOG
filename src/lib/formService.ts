@@ -75,7 +75,7 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<void>
   // This would be implemented with a backend service
   // For now, we'll simulate the email sending
   console.log('Email would be sent with data:', {
-    to: 'support@shaithilyog.live',
+    to: 'support@shaithilyog.tech',
     subject: formData.subject || 'New Contact Message',
     from: formData.email,
     message: formData.message,

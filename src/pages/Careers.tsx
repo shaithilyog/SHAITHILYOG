@@ -34,16 +34,16 @@ Please use the following format for your application:
 Thank You,
 Shaithilyog Team`);
     
-    const mailtoLink = `mailto:careers@shaithilyog.live?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:careers@shaithilyog.tech?subject=${subject}&body=${body}`;
     
     try {
       window.location.href = mailtoLink;
     } catch (error) {
       // Fallback: copy email to clipboard and show alert
-      navigator.clipboard.writeText('careers@shaithilyog.live').then(() => {
-        alert(`Please send your resume to: careers@shaithilyog.live\n\nSubject: Application for ${position} Position\n\n(Email address copied to clipboard)`);
+      navigator.clipboard.writeText('careers@shaithilyog.tech').then(() => {
+        alert(`Please send your resume to: careers@shaithilyog.tech\n\nSubject: Application for ${position} Position\n\n(Email address copied to clipboard)`);
       }).catch(() => {
-        alert(`Please send your resume to: careers@shaithilyog.live\n\nSubject: Application for ${position} Position`);
+        alert(`Please send your resume to: careers@shaithilyog.tech\n\nSubject: Application for ${position} Position`);
       });
     }
   };
@@ -71,15 +71,15 @@ Please use the following format for your general application:
 Thank You,
 Shaithilyog Team`);
     
-    const mailtoLink = `mailto:careers@shaithilyog.live?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:careers@shaithilyog.tech?subject=${subject}&body=${body}`;
     
     try {
       window.location.href = mailtoLink;
     } catch (error) {
-      navigator.clipboard.writeText('careers@shaithilyog.live').then(() => {
-        alert(`Please send your resume to: careers@shaithilyog.live\n\nSubject: General Application - Shaithilyog\n\n(Email address copied to clipboard)`);
+      navigator.clipboard.writeText('careers@shaithilyog.tech').then(() => {
+        alert(`Please send your resume to: careers@shaithilyog.tech\n\nSubject: General Application - Shaithilyog\n\n(Email address copied to clipboard)`);
       }).catch(() => {
-        alert(`Please send your resume to: careers@shaithilyog.live\n\nSubject: General Application - Shaithilyog`);
+        alert(`Please send your resume to: careers@shaithilyog.tech\n\nSubject: General Application - Shaithilyog`);
       });
     }
   };

@@ -52,13 +52,13 @@ const ContactUs = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "support@shaithilyog.live",
+      value: "support@shaithilyog.tech",
       description: "Get in touch with our healthcare team"
     },
     {
       icon: MapPin,
       title: "Website",
-      value: "shaithilyog.live",
+      value: "shaithilyog.tech",
       description: "Visit our online platform"
     }
   ];
@@ -162,7 +162,7 @@ const ContactUs = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          placeholder="your.email@example.live" 
+                          placeholder="your.email@example.tech" 
                           className="border-primary/20 focus:border-primary/50"
                           required
                         />

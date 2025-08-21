@@ -50,13 +50,13 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "support@shaithilyog.live",
+      value: "support@shaithilyog.tech",
       description: "Get in touch with our healthcare team"
     },
     {
       icon: MapPin,
       title: "Website",
-      value: "shaithilyog.live",
+      value: "shaithilyog.tech",
       description: "Visit our online platform"
     }
   ];
@@ -181,7 +181,7 @@ const ContactSection = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="john@example.live" 
+                    placeholder="john@example.tech" 
                     className="bg-background/50 border-primary/20 focus:border-primary/50"
                     required
                   />

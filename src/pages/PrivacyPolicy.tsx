@@ -206,9 +206,9 @@ const PrivacyPolicy = () => {
                   practices, please contact us:
                 </p>
                 <div className="space-y-2">
-                  <p><strong>Email:</strong> privacy@shaithilyog.live</p>
-                  <p><strong>Website:</strong> shaithilyog.live</p>
-                  <p><strong>Support:</strong> support@shaithilyog.live</p>
+                  <p><strong>Email:</strong> privacy@shaithilyog.tech</p>
+                  <p><strong>Website:</strong> shaithilyog.tech</p>
+                  <p><strong>Support:</strong> support@shaithilyog.tech</p>
                 </div>
                 <p>
                   We will respond to your inquiry within 30 days and work with you 
