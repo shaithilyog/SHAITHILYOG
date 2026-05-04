@@ -8,30 +8,30 @@ const TechnologySection = () => {
   const technologies = [
     {
       icon: Cpu,
-      title: "AI-Powered Diagnostics",
-      description: "Leverage cutting-edge artificial intelligence to improve diagnostic accuracy and speed.",
-      features: ["Machine Learning", "Pattern Recognition", "Predictive Analysis"],
+      title: "Frontier-model reasoning",
+      description: "We use Google's Gemini 2.5 Flash and Anthropic's Claude for the actual medical literacy work — schema-constrained outputs, structured reasoning over messy clinical documents.",
+      features: ["Structured JSON output", "Schema-validated responses", "No prose hallucination"],
       color: "primary"
     },
     {
       icon: Database,
-      title: "Health Data Analytics",
-      description: "Gain valuable insights from health data to improve patient outcomes and efficiency.",
-      features: ["Data Mining", "Predictive Models", "Health Insights"],
+      title: "Server-side PHI redaction",
+      description: "Names, SSNs, MRNs, phone numbers, addresses, dates of birth — scrubbed in memory before any text reaches the model. The original file is released the moment your brief is rendered.",
+      features: ["Regex + heuristic scrub", "Post-redaction sanity check", "No database, no backup"],
       color: "secondary"
     },
     {
       icon: Shield,
-      title: "Secure Health Records",
-      description: "Store and manage patient records with state-of-the-art encryption and blockchain technology.",
-      features: ["Data Encryption", "Blockchain Security", "Privacy Protection"],
+      title: "Hard guardrails",
+      description: "Every system prompt forbids diagnosis, prescription advice, or prognosis. Crisis signals trigger hard handoffs to 911, 988, or Poison Control. The model knows what it isn't.",
+      features: ["No diagnosis", "No Rx changes", "Crisis routing built in"],
       color: "accent"
     },
     {
       icon: Zap,
-      title: "Wearable Integration",
-      description: "Seamlessly integrate with popular health wearables for continuous patient monitoring.",
-      features: ["IoT Connectivity", "Real-time Monitoring", "Device Sync"],
+      title: "Open by default",
+      description: "Our evaluation datasets, redaction tooling, and medical-literacy benchmarks are released under MIT on GitHub. The commercial product is the workflow, not the model.",
+      features: ["MIT-licensed tooling", "Public eval datasets", "Build in public"],
       color: "primary-glow"
     }
   ];
@@ -70,11 +70,11 @@ const TechnologySection = () => {
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 lg:mb-6">
-            <span className="text-gradient">Healthcare</span> Technology Platform
+            <span className="text-gradient">What's</span> under the hood
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-            Our comprehensive technology ecosystem empowers healthcare providers and patients 
-            with intelligent, secure, and personalized healthcare solutions.
+            Healthcare AI fails in two ways: it makes things up, or it stores things it shouldn&apos;t.
+            We engineer against both, on every product.
           </p>
         </motion.div>
 
@@ -137,18 +137,18 @@ const TechnologySection = () => {
         >
           <Card className="inline-block p-8 shadow-neural border-primary/20 bg-gradient-to-br from-card/80 to-primary/5 backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-gradient mb-4">
-              Ready to Explore Our Technology?
+              See it in action
             </h3>
             <p className="text-muted-foreground mb-6 max-w-lg">
-              Discover how our advanced technology stack can revolutionize your research 
-              and accelerate breakthrough discoveries.
+              Kavach is the first product. Drop in a real medical document and watch
+              what the engineering above produces in about a minute.
             </p>
-            <Link to="/learn-more">
+            <a href="https://kavach.shaithilyog.tech" target="_blank" rel="noopener noreferrer">
               <Button variant="innovation" size="lg" className="group">
-                Explore Technology
+                Try Kavach
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </Link>
+            </a>
           </Card>
         </motion.div>
       </div>

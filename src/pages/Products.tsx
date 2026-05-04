@@ -28,7 +28,7 @@ const products = [
     status: 'Live',
     statusColor: 'bg-emerald-500',
     description:
-      'Drop in your loved one\'s after-visit summary, prescription list, or lab report. Kavach reads it, scrubs personal identifiers, and returns a plain-English brief: what the document says, what to ask the doctor, and what to watch for at home. Built for adult children supporting an aging parent.',
+      'For the adult child managing their parent\'s healthcare. Drop in any medical document — after-visit summary, lab report, prescription list — and in about a minute Kavach returns a plain-English care brief: what the document actually says, the questions to bring to the next appointment, and the signs to watch for at home. Source documents are read once and discarded.',
     href: 'https://kavach.shaithilyog.tech',
     available: true,
     features: [
@@ -64,14 +64,12 @@ const Products = () => {
             className="max-w-4xl mx-auto"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-gradient mb-6">
-              What we're building
+              Products
             </h1>
-            <p className="text-xl text-muted-foreground mb-2 leading-relaxed">
-              Shaithilyog Labs ships one product at a time, and only after it actually works.
-            </p>
-            <p className="text-base text-muted-foreground/70 leading-relaxed">
-              We're a one-person company in NYC. There's one live product today — Kavach — and the
-              next ones land here when they're real. No vaporware on this page.
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              We ship for the patient side of healthcare — caregivers, families, people
+              navigating diagnoses and bills and care decisions without a hospital paying their
+              way. This is what's live. What's coming sits below it, named only when it&apos;s real.
             </p>
           </motion.div>
         </div>
@@ -188,10 +186,11 @@ const Products = () => {
               <Card className="border-dashed border-primary/20 bg-card/30">
                 <CardContent className="p-12 text-center">
                   <Clock className="w-10 h-10 mx-auto mb-4 text-muted-foreground/50" />
-                  <h3 className="text-xl font-bold text-foreground/70 mb-2">More on the way</h3>
+                  <h3 className="text-xl font-bold text-foreground/70 mb-2">More in research</h3>
                   <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                    The next products under the Shaithilyog Labs umbrella are in early research.
-                    They'll appear here when they actually exist — not before.
+                    The next products under the Shaithilyog Labs umbrella tackle adjacent
+                    surfaces of the same problem — disability caregiving, surprise bills,
+                    care navigation. They show up here as they reach product-market fit.
                   </p>
                 </CardContent>
               </Card>

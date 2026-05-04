@@ -6,31 +6,31 @@ import { Microscope, Brain, Heart, Dna } from 'lucide-react';
 const ResearchSection = () => {
   const researchAreas = [
     {
-      icon: Microscope,
-      title: "Telemedicine Platform",
-      description: "Connect patients with healthcare providers seamlessly through advanced telemedicine solutions.",
-      tags: ["Remote Care", "Virtual Consultations", "Digital Health"],
+      icon: Heart,
+      title: "Caregiver-first",
+      description: "Most healthcare AI talks to the patient. We talk to the adult child, the spouse, the parent — the person who is actually managing the appointments, the medications, and the worry.",
+      tags: ["The 53M", "Adult children", "Family caregivers"],
       gradient: "from-primary to-primary-glow"
     },
     {
       icon: Brain,
-      title: "Personalized Treatment Plans",
-      description: "Use AI to create tailored treatment plans based on individual patient data and health patterns.",
-      tags: ["AI Treatment", "Personalization", "Patient Care"],
+      title: "Evidence-grounded",
+      description: "Every output cites the document it came from. We never invent a diagnosis, never recommend a medication, never claim authority that belongs to a clinician.",
+      tags: ["Cite the source", "No hallucinated meds", "Clinician-owned decisions"],
       gradient: "from-secondary to-accent"
     },
     {
-      icon: Heart,
-      title: "Preventive Healthcare",
-      description: "Advanced preventive care solutions leveraging AI and continuous health monitoring.",
-      tags: ["Prevention", "Monitoring", "Early Detection"],
+      icon: Microscope,
+      title: "Privacy by design",
+      description: "Documents you upload are read once, redacted of identifiers, processed, and discarded. There is no database, no backup, no copy. You hold the brief — we don't.",
+      tags: ["Transient processing", "PHI redaction", "Zero retention"],
       gradient: "from-accent to-primary"
     },
     {
       icon: Dna,
-      title: "Holistic Ecosystem",
-      description: "Creating an interconnected healthcare ecosystem that bridges providers, patients, and innovators.",
-      tags: ["Integration", "Collaboration", "Innovation"],
+      title: "Honest scope",
+      description: "We build informational tools, not medical devices. Hard handoffs to 911, 988, and a real clinician are part of every product. We never pretend to be the doctor.",
+      tags: ["Informational only", "Crisis routing", "Clear limits"],
       gradient: "from-primary-glow to-secondary"
     }
   ];
@@ -50,11 +50,12 @@ const ResearchSection = () => {
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 lg:mb-6">
-            <span className="text-gradient">Core</span> Features
+            <span className="text-gradient">How</span> we build
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-            Our comprehensive healthcare platform combines innovative technology with personalized care 
-            to create a seamless and integrated healthcare experience.
+            Four principles run through every product under the Shaithilyog Labs umbrella.
+            They are why people who try our tools come back, and why the ones who don&apos;t need
+            our tools yet remember us when they do.
           </p>
         </motion.div>
 

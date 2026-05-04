@@ -50,14 +50,14 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "support@shaithilyog.tech",
-      description: "Get in touch with our healthcare team"
+      value: "hello@shaithilyog.tech",
+      description: "Read by a real human, usually within a day"
     },
     {
       icon: MapPin,
-      title: "Website",
-      value: "shaithilyog.tech",
-      description: "Visit our online platform"
+      title: "Based in",
+      value: "New York, NY",
+      description: "Building remotely, shipping globally"
     }
   ];
 
@@ -72,11 +72,12 @@ const ContactSection = () => {
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 lg:mb-6">
-            <span className="text-gradient">Connect</span> With Us
+            <span className="text-gradient">Get</span> in touch
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-            Ready to be part of the healthcare revolution? Let's discuss how we can 
-            help you take control of your health and wellbeing.
+            Caring for someone right now and want a hand? Want to be a research partner,
+            a clinical advisor, or an early customer? Just curious about the project? Write
+            to us — every message is read by a human.
           </p>
         </motion.div>
 

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Clock } from 'lucide-react';
+import { ArrowRight, Mail, FlaskConical, Stethoscope, Code2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
@@ -8,9 +8,9 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const Careers = () => {
   const handleSayHi = () => {
-    const subject = encodeURIComponent('Future hiring — keep me in mind');
+    const subject = encodeURIComponent('Working with Shaithilyog Labs');
     const body = encodeURIComponent(
-      `Hi —\n\nI'd like to be on the list for when Shaithilyog Labs starts hiring. Here's a bit about me:\n\n[Background and what you've shipped]\n\n[What roles or kinds of problems you'd want to work on]\n\n[How to reach you]\n\nThanks,\n`,
+      `Hi —\n\nI'd like to be on the list when Shaithilyog Labs starts hiring.\n\n[A bit about you and what you've shipped]\n\n[Which of the rough roles below interests you, or something else]\n\n[How to reach you]\n\nThanks,\n`,
     );
     const mailto = `mailto:hello@shaithilyog.tech?subject=${subject}&body=${body}`;
     try {
@@ -20,6 +20,24 @@ const Careers = () => {
       alert('Send a note to hello@shaithilyog.tech (address copied to clipboard).');
     }
   };
+
+  const futureRoles = [
+    {
+      icon: Stethoscope,
+      title: 'Medical Co-founder',
+      summary: 'MD or PhD-MD with a clinical practice and an opinion about where AI helps and where it doesn\'t. The first hire — and a meaningful equity stake.',
+    },
+    {
+      icon: Code2,
+      title: 'ML Engineer',
+      summary: 'You ship medical-grade AI without hand-waving. Strong at LLM evals, retrieval, prompt engineering, and treating "no hallucination" as a real engineering target.',
+    },
+    {
+      icon: FlaskConical,
+      title: 'Research Partner',
+      summary: 'Clinician or researcher who wants to publish, build datasets, or evaluate our open-source tooling on real questions. Part-time, paid in honoraria + equity.',
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
@@ -34,19 +52,49 @@ const Careers = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold text-gradient mb-6">
-              Working at Shaithilyog
+              Working with us
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Honest answer: <strong>Shaithilyog Labs is one person right now.</strong> No team
-              page yet. No open roles. No fake job listings.
+              Shaithilyog Labs is small and deliberate. We are not actively hiring today,
+              but we know what the first three roles will be. If you do this kind of work
+              well, get on the list — we'd rather know you in advance.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Body */}
+      {/* Roles we're building toward */}
+      <section className="pb-12 px-6">
+        <div className="container mx-auto max-w-4xl">
+          <div className="grid md:grid-cols-3 gap-6">
+            {futureRoles.map((role, i) => (
+              <motion.div
+                key={role.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full border-primary/20 hover:border-primary/40 transition-colors">
+                  <CardContent className="p-6 space-y-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-glow flex items-center justify-center">
+                      <role.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground">{role.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {role.summary}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="pb-20 px-6">
-        <div className="container mx-auto max-w-3xl space-y-6">
+        <div className="container mx-auto max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,76 +102,26 @@ const Careers = () => {
             viewport={{ once: true }}
           >
             <Card className="border-primary/20">
-              <CardContent className="p-8 space-y-4 text-foreground/85 leading-relaxed">
-                <p>
-                  We'd rather show what we've shipped than describe a team that doesn't exist.
-                  Our first product —{' '}
-                  <a
-                    href="https://kavach.shaithilyog.tech"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary underline underline-offset-4"
-                  >
-                    Kavach
-                  </a>{' '}
-                  — went live in early access in 2026. The next ones are in research.
+              <CardContent className="p-8 text-center space-y-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-gradient">
+                  Send a note now, hear from us when there's a real role
+                </h2>
+                <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                  We&apos;d rather get to know good people early than scramble through cold
+                  applications later. Tell us what you&apos;ve shipped and what you&apos;d want to build.
                 </p>
-                <p>
-                  When real roles open — likely a medical co-founder first, then ML and design —
-                  we'll post them here with honest scope, comp, and equity. Until then, this page
-                  exists mainly to be honest with you.
-                </p>
-                <p>
-                  If you do this kind of work and want to be on the list when we start hiring,
-                  send a note. We read every one.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-4"
-          >
-            <Card className="border-primary/20 hover:border-primary/40 transition-colors">
-              <CardContent className="p-6 space-y-2">
-                <div className="flex items-center gap-2 text-primary">
-                  <Mail className="w-5 h-5" />
-                  <h3 className="font-semibold">Get in touch</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Want to be on the list when we hire?
-                </p>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleSayHi}
-                  className="mt-2 group"
-                >
-                  Say hi
-                  <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-primary/20 hover:border-primary/40 transition-colors">
-              <CardContent className="p-6 space-y-2">
-                <div className="flex items-center gap-2 text-secondary">
-                  <Clock className="w-5 h-5" />
-                  <h3 className="font-semibold">Track us</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Watch what we ship instead of what we promise.
-                </p>
-                <Link to="/products">
-                  <Button variant="outline" size="sm" className="mt-2 group">
-                    See our products
-                    <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+                  <Button onClick={handleSayHi} size="lg" className="group">
+                    <Mail className="mr-2 w-4 h-4" />
+                    Get on the list
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                </Link>
+                  <Link to="/products">
+                    <Button variant="outline" size="lg" className="w-full">
+                      See what we ship
+                    </Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
           </motion.div>

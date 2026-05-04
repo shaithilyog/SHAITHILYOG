@@ -33,17 +33,19 @@ const HeroSection = () => {
               className="space-y-3 lg:space-y-4"
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
-                <span className="text-gradient">Shaithilyog</span>
+                <span className="text-foreground">Healthcare AI,</span>
                 <br />
-                <span className="text-foreground">Labs</span>
+                <span className="text-gradient">built for the</span>
+                <br />
+                <span className="text-gradient">patient side.</span>
               </h1>
 
               <p className="text-base sm:text-lg lg:text-2xl text-muted-foreground max-w-lg mx-auto lg:mx-0">
-                We build careful, evidence-grounded AI tools for the people big tech ignores —
-                <span className="text-primary font-semibold"> caregivers, patients, and families</span>{' '}
-                navigating
-                <span className="text-secondary font-semibold"> the healthcare system</span>.
-                Our first product is live.
+                Most healthcare AI is built for hospitals.
+                <span className="text-primary font-semibold"> Shaithilyog Labs</span> builds for
+                everyone else — the
+                <span className="text-secondary font-semibold"> patients, caregivers, and families</span>{' '}
+                trying to make sense of a diagnosis at 2am.
               </p>
             </motion.div>
 
@@ -75,16 +77,16 @@ const HeroSection = () => {
               className="grid grid-cols-3 gap-2 sm:gap-4 pt-6 lg:pt-8 max-w-sm mx-auto lg:mx-0"
             >
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">1</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Product live</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">2am</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">When people need us</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">$0</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Outside funding</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">53M</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">US caregivers we serve</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">NYC</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Building solo</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">0</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Documents we store</div>
               </div>
             </motion.div>
           </motion.div>
@@ -106,7 +108,7 @@ const HeroSection = () => {
               className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-lg p-2 sm:p-4 shadow-neural"
             >
               <div className="text-xs sm:text-sm font-semibold text-primary">Live: Kavach</div>
-              <div className="text-xs text-muted-foreground hidden sm:block">AI care brief for caregivers</div>
+              <div className="text-xs text-muted-foreground hidden sm:block">A care brief in 60 seconds</div>
             </motion.div>
 
             <motion.div
@@ -115,8 +117,8 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 1.4 }}
               className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 bg-card/80 backdrop-blur-sm border border-secondary/20 rounded-lg p-2 sm:p-4 shadow-neural"
             >
-              <div className="text-xs sm:text-sm font-semibold text-secondary">Building in public</div>
-              <div className="text-xs text-muted-foreground hidden sm:block">More products on the way</div>
+              <div className="text-xs sm:text-sm font-semibold text-secondary">Privacy by design</div>
+              <div className="text-xs text-muted-foreground hidden sm:block">Documents read once, never stored</div>
             </motion.div>
           </motion.div>
         </div>
