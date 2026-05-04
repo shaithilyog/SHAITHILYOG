@@ -113,10 +113,10 @@ const ResearchSection = () => {
           className="mt-16 lg:mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
         >
           {[
-            { label: "Active Studies", value: "12", suffix: "+" },
-            { label: "Research Papers", value: "25", suffix: "+" },
-            { label: "Lab Partners", value: "8", suffix: "" },
-            { label: "Data Sets", value: "100", suffix: "TB+" }
+            { label: "Live products", value: "1", suffix: "" },
+            { label: "Outside funding", value: "$0", suffix: "" },
+            { label: "Founders", value: "1", suffix: "" },
+            { label: "Building since", value: "2026", suffix: "" }
           ].map((stat, index) => (
             <motion.div
               key={index}

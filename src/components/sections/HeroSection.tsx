@@ -33,17 +33,17 @@ const HeroSection = () => {
               className="space-y-3 lg:space-y-4"
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
-                <span className="text-gradient">Revolutionizing</span>
+                <span className="text-gradient">Shaithilyog</span>
                 <br />
-                <span className="text-foreground">Healthcare</span>
-                <br />
-                <span className="text-gradient">Technology</span>
+                <span className="text-foreground">Labs</span>
               </h1>
-              
+
               <p className="text-base sm:text-lg lg:text-2xl text-muted-foreground max-w-lg mx-auto lg:mx-0">
-                Empowering You to Empower Your Health through 
-                <span className="text-primary font-semibold"> AI-powered diagnostics</span> and 
-                <span className="text-secondary font-semibold"> personalized healthcare solutions</span>.
+                We build careful, evidence-grounded AI tools for the people big tech ignores —
+                <span className="text-primary font-semibold"> caregivers, patients, and families</span>{' '}
+                navigating
+                <span className="text-secondary font-semibold"> the healthcare system</span>.
+                Our first product is live.
               </p>
             </motion.div>
 
@@ -53,17 +53,17 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start"
             >
-              <Link to="/join-the-future">
+              <a href="https://kavach.shaithilyog.tech" target="_blank" rel="noopener noreferrer">
                 <Button variant="hero" size="lg" className="group w-full sm:w-auto">
-                  Join the Future
+                  Try Kavach
                   <ArrowRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </Link>
-              
-              <Link to="/learn-more">
+              </a>
+
+              <Link to="/products">
                 <Button variant="neural" size="lg" className="group w-full sm:w-auto">
                   <Play className="mr-2 h-4 w-4 lg:h-5 lg:w-5" />
-                  Learn More
+                  See what we're building
                 </Button>
               </Link>
             </motion.div>
@@ -75,16 +75,16 @@ const HeroSection = () => {
               className="grid grid-cols-3 gap-2 sm:gap-4 pt-6 lg:pt-8 max-w-sm mx-auto lg:mx-0"
             >
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">24/7</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">AI Monitoring</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">1</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Product live</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">300K+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Health Records</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">$0</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Outside funding</div>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">80%🔺</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Accuracy</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient">NYC</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Building solo</div>
               </div>
             </motion.div>
           </motion.div>
@@ -105,8 +105,8 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 1.2 }}
               className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-lg p-2 sm:p-4 shadow-neural"
             >
-              <div className="text-xs sm:text-sm font-semibold text-primary">AI Diagnostics</div>
-              <div className="text-xs text-muted-foreground hidden sm:block">Real-time analysis</div>
+              <div className="text-xs sm:text-sm font-semibold text-primary">Live: Kavach</div>
+              <div className="text-xs text-muted-foreground hidden sm:block">AI care brief for caregivers</div>
             </motion.div>
 
             <motion.div
@@ -115,8 +115,8 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 1.4 }}
               className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 bg-card/80 backdrop-blur-sm border border-secondary/20 rounded-lg p-2 sm:p-4 shadow-neural"
             >
-              <div className="text-xs sm:text-sm font-semibold text-secondary">Health Analytics</div>
-              <div className="text-xs text-muted-foreground hidden sm:block">Personalized insights</div>
+              <div className="text-xs sm:text-sm font-semibold text-secondary">Building in public</div>
+              <div className="text-xs text-muted-foreground hidden sm:block">More products on the way</div>
             </motion.div>
           </motion.div>
         </div>

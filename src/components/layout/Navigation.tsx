@@ -46,8 +46,8 @@ const Navigation = () => {
               <Activity className="w-3 h-3 sm:w-4 sm:h-4 text-background/70 absolute top-1 right-1" />
             </div>
             <div className="hidden sm:block">
-              <div className="text-lg sm:text-xl font-bold text-gradient">ShaithilYog</div>
-              <div className="text-xs text-muted-foreground">Healthcare Technology</div>
+              <div className="text-lg sm:text-xl font-bold text-gradient">Shaithilyog Labs</div>
+              <div className="text-xs text-muted-foreground">Healthcare AI · NYC</div>
             </div>
           </motion.div>
 
@@ -68,16 +68,16 @@ const Navigation = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
-            <Link to="/join-the-future">
+            <Link to="/contact-us">
               <Button variant="neural" size="sm">
-                Join the Future
+                Contact
               </Button>
             </Link>
-            <Link to="/learn-more">
+            <a href="https://kavach.shaithilyog.tech" target="_blank" rel="noopener noreferrer">
               <Button variant="hero" size="sm">
-                Learn More
+                Try Kavach
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -117,16 +117,21 @@ const Navigation = () => {
               </motion.div>
             ))}
             <div className="pt-3 space-y-2">
-              <Link to="/join-the-future">
+              <Link to="/contact-us" onClick={() => setIsOpen(false)}>
                 <Button variant="neural" size="sm" className="w-full">
-                  Join the Future
+                  Contact
                 </Button>
               </Link>
-              <Link to="/learn-more">
+              <a
+                href="https://kavach.shaithilyog.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+              >
                 <Button variant="hero" size="sm" className="w-full">
-                  Learn More
+                  Try Kavach
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>

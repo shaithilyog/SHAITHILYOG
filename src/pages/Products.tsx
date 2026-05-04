@@ -2,184 +2,60 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/lib/supabase';
-import { 
-  ArrowRight, 
-  Smartphone, 
-  Dumbbell, 
-  Heart, 
-  Calendar, 
-  Users, 
-  TrendingUp,
-  Play,
-  Star,
+import {
+  ArrowRight,
+  Heart,
+  Calendar,
   Clock,
-  Activity,
-  Utensils,
-  Moon,
-  Target,
-  BarChart3,
-  Zap,
   Shield,
   Brain,
-  Building2,
-  CreditCard,
-  User,
   Stethoscope,
-  MessageCircle,
-  Database,
-  Camera,
-  Mail,
-  CheckCircle
+  Users,
+  Pill,
+  HelpCircle,
+  Eye,
+  AlertTriangle,
 } from 'lucide-react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 
-// Import LogX assets
-import logxLogo from '@/assets/logx/logX logo.png';
-import logxPlaystore from '@/assets/logx/logx_playstore image.png';
-import logxSplash from '@/assets/logx/splash-screen.png';
+const products = [
+  {
+    id: 'kavach',
+    name: 'Kavach',
+    subtitle: 'An AI care brief for the parent you\'re caring for',
+    status: 'Live',
+    statusColor: 'bg-emerald-500',
+    description:
+      'Drop in your loved one\'s after-visit summary, prescription list, or lab report. Kavach reads it, scrubs personal identifiers, and returns a plain-English brief: what the document says, what to ask the doctor, and what to watch for at home. Built for adult children supporting an aging parent.',
+    href: 'https://kavach.shaithilyog.tech',
+    available: true,
+    features: [
+      { icon: Stethoscope, title: 'Care brief', desc: 'Plain-English summary of any medical document the caregiver uploads' },
+      { icon: Pill, title: 'Medication map', desc: 'What each prescription is for, dose, prescriber, drug interactions to ask about' },
+      { icon: Calendar, title: 'Upcoming & follow-ups', desc: 'Lab dates, vaccines due, next appointment with what to prepare' },
+      { icon: HelpCircle, title: 'Questions for the doctor', desc: 'Specific, document-grounded questions to bring to the next visit' },
+      { icon: Eye, title: 'Watch-for at home', desc: 'Plain-English signs that mean call the doctor (not 911)' },
+      { icon: AlertTriangle, title: 'Red-flag escalation', desc: 'Hard handoff to 911 / 988 / Poison Control when warranted' },
+      { icon: Shield, title: 'Transient processing', desc: 'Documents are read once and discarded — never stored' },
+      { icon: Heart, title: 'Caregiver-first', desc: 'Speaks to you, not to the patient. Built for the adult child role.' },
+    ],
+    techSpecs: {
+      platform: ['Web (mobile-friendly)'],
+      ai: ['Gemini 2.5 Flash', 'Server-side PHI redaction', 'Schema-validated output'],
+      privacy: ['No PHI storage', '"Informational only" disclosure', 'Crisis resources surfaced'],
+    },
+  },
+];
 
 const Products = () => {
-  const [email, setEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
-
-  const handleBetaSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) {
-      toast({
-        title: "Email Required",
-        description: "Please enter your email address to join the beta.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsLoading(true);
-    
-    try {
-      const { data, error } = await supabase
-        .from('beta_signups')
-        .insert([
-          {
-            email: email,
-            product: 'logx',
-            signed_up_at: new Date().toISOString()
-          }
-        ]);
-
-      if (error) {
-        throw error;
-      }
-
-      toast({
-        title: "Successfully Signed Up!",
-        description: "Thank you for joining the LogX beta! We'll contact you soon with testing details.",
-      });
-      
-      setEmail('');
-    } catch (error: any) {
-      console.error('Error signing up for beta:', error);
-      toast({
-        title: "Signup Failed",
-        description: "There was an error signing up for the beta. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const products = [
-    {
-      id: 'logx',
-      name: 'LogX',
-      subtitle: 'Fitness, Food & Progress',
-      status: 'Alpha Testing',
-      statusColor: 'bg-blue-500',
-      description: 'Your comprehensive fitness companion powered by AI. Track workouts, nutrition, and progress with intelligent recommendations.',
-      logo: logxLogo,
-      banner: logxPlaystore,
-      screenshots: [logxSplash],
-      available: true,
-      features: [
-        { icon: User, title: 'Personal Profile', desc: 'Secure registration with personalized fitness goals' },
-        { icon: Target, title: 'Smart Goal Setting', desc: 'AI-powered recommendations based on your objectives' },
-        { icon: Heart, title: 'Health Monitoring', desc: 'Track allergies, conditions, and body measurements' },
-        { icon: Dumbbell, title: 'Custom Workouts', desc: 'Tailored plans with video tutorials and progress tracking' },
-        { icon: Utensils, title: 'Nutrition Intelligence', desc: 'Smart meal plans with macro tracking and recipe suggestions' },
-        { icon: Moon, title: 'Sleep Analytics', desc: 'Monitor sleep quality for complete wellness tracking' },
-        { icon: Brain, title: 'ML Recommendations', desc: 'Personalized suggestions that evolve with your progress' },
-        { icon: Activity, title: 'Virtual Classes', desc: 'Join live workout sessions from anywhere' }
-      ],
-      techSpecs: {
-        platform: ['Android', 'iOS (Coming Soon)'],
-        ai: ['Exercise Recommendation Engine', 'Nutrition Analysis', 'Progress Prediction', 'Image to Nutrition']
-      }
-    },
-    {
-      id: 'ascendancy',
-      name: 'Ascendancy',
-      subtitle: 'Gym & Subscription Management',
-      status: 'In Development',
-      statusColor: 'bg-orange-500',
-      description: 'Complete gym management solution for fitness centers and their members.',
-      logo: '/api/placeholder/100/100',
-      banner: '/api/placeholder/800/400',
-      screenshots: [],
-      available: false,
-      features: [
-        { icon: Building2, title: 'Gym Management', desc: 'Complete facility and equipment management' },
-        { icon: Users, title: 'Member Portal', desc: 'Streamlined member registration and profiles' },
-        { icon: CreditCard, title: 'Subscription Billing', desc: 'Automated billing and payment processing' },
-        { icon: Calendar, title: 'Class Scheduling', desc: 'Easy booking system for classes and trainers' },
-        { icon: BarChart3, title: 'Analytics Dashboard', desc: 'Real-time insights on gym performance' },
-        { icon: Smartphone, title: 'Mobile App', desc: 'Companion app for members and staff' }
-      ],
-      techSpecs: {
-        platform: ['Web Dashboard', 'Mobile App'],
-        integration: ['Payment Gateways', 'Access Control Systems'],
-        features: ['Real-time Analytics', 'Automated Billing', 'Member Management']
-      }
-    },
-    {
-      id: 'sha',
-      name: 'SHA',
-      subtitle: 'Simplified Health Assistant',
-      status: 'In Development',
-      statusColor: 'bg-purple-500',
-      description: 'AI-powered health assistant that simplifies healthcare management and provides intelligent insights.',
-      logo: '/api/placeholder/100/100',
-      banner: '/api/placeholder/800/400',
-      screenshots: [],
-      available: false,
-      features: [
-        { icon: Stethoscope, title: 'Health Monitoring', desc: 'Continuous health parameter tracking' },
-        { icon: Brain, title: 'AI Diagnostics', desc: 'Intelligent health analysis and recommendations' },
-        { icon: MessageCircle, title: 'Health Chat', desc: '24/7 AI health assistant for queries' },
-        { icon: Database, title: 'Medical Records', desc: 'Secure digital health record management' },
-        { icon: Shield, title: 'Privacy First', desc: 'End-to-end encryption for all health data' },
-        { icon: TrendingUp, title: 'Health Trends', desc: 'Predictive analytics for health patterns' }
-      ],
-      techSpecs: {
-        platform: ['Mobile App', 'Web Portal'],
-        integration: ['Healthcare APIs', 'Wearable Devices'],
-        ai: ['Diagnostic Assistant', 'Health Prediction', 'Symptom Analysis']
-      }
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-32 pb-12 px-6">
         <div className="container mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -188,18 +64,21 @@ const Products = () => {
             className="max-w-4xl mx-auto"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-gradient mb-6">
-              Our Products
+              What we're building
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Discover our innovative healthcare and fitness solutions designed to transform 
-              your wellness journey through cutting-edge technology and AI-powered insights.
+            <p className="text-xl text-muted-foreground mb-2 leading-relaxed">
+              Shaithilyog Labs ships one product at a time, and only after it actually works.
+            </p>
+            <p className="text-base text-muted-foreground/70 leading-relaxed">
+              We're a one-person company in NYC. There's one live product today — Kavach — and the
+              next ones land here when they're real. No vaporware on this page.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Products Grid */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-6">
         <div className="container mx-auto">
           <div className="grid gap-12">
             {products.map((product, index) => (
@@ -211,78 +90,46 @@ const Products = () => {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <Card className={`border-primary/20 hover:border-primary/40 transition-all duration-300 overflow-hidden ${!product.available ? 'opacity-75' : ''}`}>
-                  {!product.available && (
-                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm z-10 flex items-center justify-center">
-                      <div className="text-center">
-                        <Clock className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-                        <h3 className="text-2xl font-bold text-gradient mb-2">Coming Soon</h3>
-                        <p className="text-muted-foreground">Currently in development</p>
-                      </div>
-                    </div>
-                  )}
-                  
+                <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 overflow-hidden">
                   <CardContent className="p-0">
                     {/* Product Header */}
                     <div className="p-8 bg-gradient-to-r from-primary/5 to-secondary/5">
-                      <div className="flex flex-col lg:flex-row lg:items-center gap-8">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-4 mb-4">
-                            <img 
-                              src={product.logo} 
-                              alt={`${product.name} Logo`}
-                              className="w-16 h-16 rounded-xl shadow-lg"
-                            />
-                            <div>
-                              <h2 className="text-3xl font-bold text-gradient">{product.name}</h2>
-                              <p className="text-lg text-muted-foreground">{product.subtitle}</p>
-                            </div>
+                      <div className="flex flex-col gap-6">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-3 mb-4">
+                            <h2 className="text-3xl md:text-4xl font-bold text-gradient">
+                              {product.name}
+                            </h2>
                             <Badge className={`${product.statusColor} text-white`}>
                               {product.status}
                             </Badge>
                           </div>
-                          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                          <p className="text-lg text-muted-foreground italic mb-4">
+                            {product.subtitle}
+                          </p>
+                          <p className="text-base text-foreground/80 leading-relaxed mb-6 max-w-3xl">
                             {product.description}
                           </p>
-                          
-                          {product.available && (
-                            <form onSubmit={handleBetaSignup} className="space-y-4">
-                              <div className="flex flex-col sm:flex-row gap-3">
-                                <Input
-                                  type="email"
-                                  placeholder="Enter your email for beta access"
-                                  value={email}
-                                  onChange={(e) => setEmail(e.target.value)}
-                                  className="flex-1"
-                                  disabled={isLoading}
-                                />
-                                <Button type="submit" className="group" disabled={isLoading}>
-                                  <Mail className="w-4 h-4 mr-2" />
-                                  {isLoading ? 'Signing Up...' : 'Signup for Beta'}
-                                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                                </Button>
-                              </div>
-                              <p className="text-sm text-muted-foreground">
-                                Currently testing on Android. iOS version coming soon!
-                              </p>
-                            </form>
-                          )}
-                        </div>
-                        
-                        {/* Product Screenshot */}
-                        <div className="lg:w-1/3">
-                          <img 
-                            src={product.banner} 
-                            alt={`${product.name} Interface`}
-                            className="w-full rounded-xl shadow-2xl"
-                          />
+
+                          <div className="flex flex-col sm:flex-row gap-3">
+                            <a
+                              href={product.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Button size="lg" className="group w-full sm:w-auto">
+                                Open {product.name}
+                                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                              </Button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
 
                     {/* Features Grid */}
                     <div className="p-8">
-                      <h3 className="text-2xl font-bold text-gradient mb-6">Key Features</h3>
+                      <h3 className="text-2xl font-bold text-gradient mb-6">What it does</h3>
                       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                         {product.features.map((feature, featureIndex) => (
                           <div key={featureIndex} className="text-center">
@@ -297,36 +144,32 @@ const Products = () => {
 
                       {/* Tech Specs */}
                       <div className="border-t border-primary/10 pt-8">
-                        <h4 className="text-lg font-semibold mb-4">Technical Specifications</h4>
+                        <h4 className="text-lg font-semibold mb-4">Under the hood</h4>
                         <div className="grid md:grid-cols-3 gap-6">
                           <div>
                             <h5 className="font-medium text-primary mb-2">Platform</h5>
                             <div className="flex flex-wrap gap-2">
-                              {product.techSpecs.platform.map((platform, i) => (
-                                <Badge key={i} variant="secondary">{platform}</Badge>
+                              {product.techSpecs.platform.map((p, i) => (
+                                <Badge key={i} variant="secondary">{p}</Badge>
                               ))}
                             </div>
                           </div>
-                          {product.techSpecs.ai && (
-                            <div>
-                              <h5 className="font-medium text-primary mb-2">AI Features</h5>
-                              <div className="flex flex-wrap gap-2">
-                                {product.techSpecs.ai.map((ai, i) => (
-                                  <Badge key={i} variant="secondary" className="bg-gradient-glow text-primary">{ai}</Badge>
-                                ))}
-                              </div>
+                          <div>
+                            <h5 className="font-medium text-primary mb-2">AI</h5>
+                            <div className="flex flex-wrap gap-2">
+                              {product.techSpecs.ai.map((a, i) => (
+                                <Badge key={i} variant="secondary" className="bg-gradient-glow text-primary">{a}</Badge>
+                              ))}
                             </div>
-                          )}
-                          {product.techSpecs.features && (
-                            <div>
-                              <h5 className="font-medium text-primary mb-2">Core Features</h5>
-                              <div className="flex flex-wrap gap-2">
-                                {product.techSpecs.features.map((feature, i) => (
-                                  <Badge key={i} variant="outline">{feature}</Badge>
-                                ))}
-                              </div>
+                          </div>
+                          <div>
+                            <h5 className="font-medium text-primary mb-2">Privacy</h5>
+                            <div className="flex flex-wrap gap-2">
+                              {product.techSpecs.privacy.map((p, i) => (
+                                <Badge key={i} variant="outline">{p}</Badge>
+                              ))}
                             </div>
-                          )}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -334,6 +177,25 @@ const Products = () => {
                 </Card>
               </motion.div>
             ))}
+
+            {/* Future placeholder card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <Card className="border-dashed border-primary/20 bg-card/30">
+                <CardContent className="p-12 text-center">
+                  <Clock className="w-10 h-10 mx-auto mb-4 text-muted-foreground/50" />
+                  <h3 className="text-xl font-bold text-foreground/70 mb-2">More on the way</h3>
+                  <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                    The next products under the Shaithilyog Labs umbrella are in early research.
+                    They'll appear here when they actually exist — not before.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -349,23 +211,22 @@ const Products = () => {
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-4xl font-bold text-gradient mb-6">
-              Ready to Transform Your Health Journey?
+              Caring for someone right now?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of users who are already experiencing the future of healthcare technology.
-              Be the first to access our latest innovations.
+              Kavach is free while in early access. Drop in a medical document and see what comes back.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link to="/join-the-future">
-                  Join Beta Program
-                  <Zap className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <a href="https://kavach.shaithilyog.tech" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="w-full sm:w-auto">
+                  Try Kavach now
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
               <Button size="lg" variant="outline" asChild>
                 <Link to="/contact-us">
-                  Contact Sales
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  Get in touch
+                  <Users className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
