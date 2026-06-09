@@ -180,6 +180,9 @@ export default function Stealth() {
       {/* ===== beat 1 — hero ===== */}
       <Beat progress={scrollYProgress} fadeOut={[0.1, 0.18]}>
         <div className="max-w-3xl text-center">
+          <p className="mb-6 text-[10px] tracking-[0.45em] text-cyan-300/50 uppercase">
+            Early detection · Longevity · Care
+          </p>
           <h1 className="text-4xl font-extralight leading-[1.15] tracking-tight sm:text-6xl md:text-7xl">
             The intelligence layer
             <br />
@@ -188,6 +191,29 @@ export default function Stealth() {
           <p className="mt-7 text-base font-light tracking-wide text-white/45 sm:text-lg">
             We're building it quietly, in New York.
           </p>
+          {/* ECG trace — the one literal health cue */}
+          <svg
+            viewBox="0 0 600 60"
+            className="mx-auto mt-10 h-10 w-full max-w-md opacity-50"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M0 30 H180 L196 30 L204 12 L212 48 L220 24 L228 30 H310 L320 26 L328 30 H600"
+              stroke="#22d3ee"
+              strokeWidth="1.2"
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray="0.38 0.62"
+              className="ecg-trace"
+            />
+          </svg>
+          <style>{`
+            .ecg-trace { animation: ecg-crawl 3.2s linear infinite; }
+            @keyframes ecg-crawl { from { stroke-dashoffset: 1; } to { stroke-dashoffset: -0.38; } }
+            @media (prefers-reduced-motion: reduce) { .ecg-trace { animation: none; stroke-dasharray: none; } }
+          `}</style>
           <div className="mt-16 flex flex-col items-center gap-2 text-white/30">
             <span className="text-[10px] tracking-[0.4em] uppercase">Scroll</span>
             <motion.div
@@ -223,13 +249,15 @@ export default function Stealth() {
             <br className="hidden sm:block" /> we'd like to know you.
           </p>
           <RequestAccess />
-          <footer className="mt-6 flex flex-col items-center gap-2 text-[11px] tracking-[0.2em] text-white/25 uppercase">
-            <span>© 2026 Shaithilyog Labs · New York</span>
-            <span className="flex gap-5 normal-case tracking-normal">
-              <Link to="/privacy-policy" className="hover:text-white/50 transition-colors">
+          <footer className="mt-10 flex flex-col items-center gap-3 rounded-full bg-black/50 px-8 py-4 backdrop-blur-sm">
+            <span className="text-[11px] tracking-[0.25em] text-white/55 uppercase">
+              © 2026 Shaithilyog Labs · New York
+            </span>
+            <span className="flex gap-6 text-[13px] text-white/45">
+              <Link to="/privacy-policy" className="transition-colors hover:text-cyan-300">
                 Privacy
               </Link>
-              <Link to="/terms-of-service" className="hover:text-white/50 transition-colors">
+              <Link to="/terms-of-service" className="transition-colors hover:text-cyan-300">
                 Terms
               </Link>
             </span>

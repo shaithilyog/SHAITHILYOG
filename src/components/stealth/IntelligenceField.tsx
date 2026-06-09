@@ -142,12 +142,22 @@ function Particles({ progressRef, mouseRef }: SharedRefs) {
           varying float vAlpha;
           varying float vMix;
 
+          // lub-dub heartbeat envelope, ~66 bpm
+          float heartbeat(float t) {
+            float ph = fract(t / 0.9);
+            float lub = exp(-pow((ph - 0.10) * 16.0, 2.0));
+            float dub = 0.55 * exp(-pow((ph - 0.34) * 16.0, 2.0));
+            return lub + dub;
+          }
+
           void main() {
             float p = smoothstep(0.0, 1.0, uProgress);
             // each particle arrives slightly offset for an organic sweep
             float local = clamp(p * 1.25 - aPhase * 0.04, 0.0, 1.0);
             local = local * local * (3.0 - 2.0 * local);
-            vec3 pos = mix(aStart, aTarget, local);
+            // the converged structure beats like a living thing
+            float hb = heartbeat(uTime);
+            vec3 pos = mix(aStart, aTarget * (1.0 + 0.028 * hb), local);
 
             // perpetual drift so the field always feels alive
             float drift = mix(0.55, 0.14, local);
@@ -164,7 +174,7 @@ function Particles({ progressRef, mouseRef }: SharedRefs) {
             // converged structure reads as crisp constellation, not a glow-blob:
             // points shrink and dim as they lock into place
             gl_PointSize = aSize * tw * (210.0 / -mv.z) * mix(1.0, 0.42, local);
-            vAlpha = tw * mix(0.4, 0.58, local);
+            vAlpha = tw * mix(0.4, 0.58, local) * (1.0 + 0.3 * hb * local);
             vMix = local;
           }
         `,
