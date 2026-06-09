@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Heart, Activity } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Mark } from '@/components/brand/Mark';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,9 +42,8 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-glow relative">
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-background absolute" />
-              <Activity className="w-3 h-3 sm:w-4 sm:h-4 text-background/70 absolute top-1 right-1" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-glow text-background">
+              <Mark className="w-5 h-5 sm:w-6 sm:h-6" stroke={3} />
             </div>
             <div className="hidden sm:block">
               <div className="text-lg sm:text-xl font-bold text-gradient">Shaithilyog Labs</div>
