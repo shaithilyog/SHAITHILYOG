@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion
 import { supabase } from '@/lib/supabase';
 
 const IntelligenceField = lazy(() => import('@/components/stealth/IntelligenceField'));
+import ForesightSignal from '@/components/stealth/ForesightSignal';
 
 /**
  * Stealth landing — shaithilyog.tech
@@ -191,29 +192,8 @@ export default function Stealth() {
           <p className="mt-7 text-base font-light tracking-wide text-white/45 sm:text-lg">
             We're building it quietly, in New York.
           </p>
-          {/* ECG trace — the one literal health cue */}
-          <svg
-            viewBox="0 0 600 60"
-            className="mx-auto mt-10 h-10 w-full max-w-md opacity-50"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M0 30 H180 L196 30 L204 12 L212 48 L220 24 L228 30 H310 L320 26 L328 30 H600"
-              stroke="#22d3ee"
-              strokeWidth="1.2"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              pathLength={1}
-              strokeDasharray="0.38 0.62"
-              className="ecg-trace"
-            />
-          </svg>
-          <style>{`
-            .ecg-trace { animation: ecg-crawl 3.2s linear infinite; }
-            @keyframes ecg-crawl { from { stroke-dashoffset: 1; } to { stroke-dashoffset: -0.38; } }
-            @media (prefers-reduced-motion: reduce) { .ecg-trace { animation: none; stroke-dasharray: none; } }
-          `}</style>
+          {/* predictive biosignal — measured past, AI-forecast future */}
+          <ForesightSignal />
           <div className="mt-16 flex flex-col items-center gap-2 text-white/30">
             <span className="text-[10px] tracking-[0.4em] uppercase">Scroll</span>
             <motion.div
