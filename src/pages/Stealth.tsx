@@ -59,8 +59,8 @@ function RequestAccess() {
     setState('sending');
     try {
       const { error } = await supabase
-        .from('beta_signups')
-        .insert([{ email, product: 'labs', signed_up_at: new Date().toISOString() }]);
+        .from('waitlist')
+        .insert([{ email, source: 'labs-site' }]);
       if (error) throw error;
       setState('done');
     } catch {
